@@ -17,11 +17,12 @@ export default function Login() {
   const colors = tokens(theme.palette.mode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const { isFetching, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(dispatch, { email, password });
+    login(dispatch, { username,email, password });
   };
 
   return (

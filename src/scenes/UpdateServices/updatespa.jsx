@@ -1,22 +1,23 @@
 import { useTheme } from "@emotion/react";
-import { useGridApiEventHandler } from "@mui/x-data-grid";
+// import { useGridApiEventHandler } from "@mui/x-data-grid";
 import {
   Box,
   Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
+  // FormControl,
+  // InputLabel,
+  // MenuItem,
+  // Select,
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addSpa } from "../../redux/apiCalls";
+import { updateSpa } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
 
 import Header from "../../components/Header";
+import { useParams } from "react-router-dom";
 
-const Addspa = () => {
+const UpdateSpa = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -43,19 +44,22 @@ const Addspa = () => {
   // const handleDiscription = (e) => {
   //   setDiscription(e.target.value.split(","));
   // };
+
+  const id = useParams().id;
+  // console.log("params id:",id);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const addspa = {
+    const updatespa = {
       ...inputs,
     };
-    console.log(addspa);
-    addSpa(addspa, dispatch);
-    toast.success("Spa Added Successfully!");
+    console.log(updatespa);
+    updateSpa(id, updatespa, dispatch);
+    toast.success("Spa Update Successfully!");
   };
 
   return (
     <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
-      <Header title={`ADD SPA & MASSAGE`} subtitle="Create New  Services " />
+      <Header title={`UPDATE SPA & MASSAGE`} subtitle="Update  Services " />
       <Box
         display="grid"
         gap="30px"
@@ -109,7 +113,7 @@ const Addspa = () => {
           sx={{ gridColumn: "span 4" }}
         >
           <Button type="submit" color="secondary" variant="contained">
-            ADD Services
+            Update Services
           </Button>
         </Box>
       </Box>
@@ -118,4 +122,4 @@ const Addspa = () => {
   );
 };
 
-export default Addspa;
+export default UpdateSpa;

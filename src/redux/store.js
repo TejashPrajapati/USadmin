@@ -2,8 +2,10 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./userRedux";
 import productReducer from "./productRedux";
 import sliderReducer from "./sliderRedux";
+import addspaRedux from "./addspaRedux";
 import aboutpageReducer from "./aboutpageRedux"
 import storage from "redux-persist/lib/storage";
+
 import {
   persistStore,
   persistReducer,
@@ -14,6 +16,10 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import electricianRedux from "./electricianRedux";
+import mansalonRedux from "./mansalonRedux";
+import womanRedux from "./womanRedux";
+import homeclenerRedux from "./homeclenerRedux";
 
 const persistConfig = {
   key: "root",
@@ -25,6 +31,11 @@ const rootReducer = combineReducers({
   products: productReducer,
   sliders: sliderReducer,
   aboutpage: aboutpageReducer,
+  spa: addspaRedux,
+  electrician: electricianRedux,
+  mansalon: mansalonRedux,
+  womansalon:womanRedux,
+  homecleaning:homeclenerRedux,
 });
 
 
@@ -36,7 +47,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,],
       },
     }),
 });

@@ -6,9 +6,12 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import ManIcon from '@mui/icons-material/Man';
+import WomanIcon from '@mui/icons-material/Woman';
 import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
-import ContentCutIcon from '@mui/icons-material/ContentCut';
+
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import SpaIcon from '@mui/icons-material/Spa';
@@ -101,7 +104,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`https://qph.cf2.quoracdn.net/main-qimg-aff66cfacb4de9a0ff858ac84b43611d-lq`}
+                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1wuYKiW-nKsq2brVe5IC5hmUJdTeNtANvehhA37w&s`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -112,7 +115,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Eren Yegaer
+                  Admin
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   Admin
@@ -137,13 +140,13 @@ const Sidebar = () => {
             >
               Data
             </Typography>
-            <Item
+            {/* <Item
               title="Products"
               to="/products"
               icon={<Inventory2Outlined />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Item
               title="Users"
               to="/contacts"
@@ -168,17 +171,24 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="spa"
-              to="/add-spa"
+              to="/spa"
               icon={<SpaIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="salon"
-              to="/salon"
-              icon={<ContentCutIcon />}
+              title="Mansalon"
+              to="/mansalon"
+              icon={<ManIcon />}
               selected={selected}
-              setSelected={setSelected}
+              setSelected={setSelected} 
+            />
+             <Item
+              title="Womansalon"
+              to="/womansalon"
+              icon={<WomanIcon />}
+              selected={selected}
+              setSelected={setSelected} 
             />
              <Item
               title="offer Sliders"
@@ -224,7 +234,7 @@ const Sidebar = () => {
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> 
             <Item
               title="Pie Chart"
               to="/pie"

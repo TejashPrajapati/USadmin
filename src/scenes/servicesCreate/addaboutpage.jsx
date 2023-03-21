@@ -1,9 +1,19 @@
+// import React from 'react'
+
+// const addaboutpage = () => {
+//   return (
+//     <div>addaboutpage</div>
+//   )
+// }
+
+// export default addaboutpage
 import { useTheme } from "@emotion/react";
 import { useGridApiEventHandler } from "@mui/x-data-grid";
 import {
   Box,
   Button,
   FormControl,
+  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -11,12 +21,14 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addSpa } from "../../redux/apiCalls";
+import { addaboutpage } from "../../redux/aboutpageRedux"
+import { addAboutpage } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
+import FileBase64 from 'react-file-base64';
 
 import Header from "../../components/Header";
 
-const Addspa = () => {
+const Addaboutpage = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -24,6 +36,7 @@ const Addspa = () => {
   // const [rating , setRating] = useState({});
   // const [price , setPrice] = useState();
   // const [discription , setDiscription] = useState();
+  const [image , setImage] = useState();
 
   const handleChange = (e) => {
     setInputs((prev) => {
@@ -45,12 +58,12 @@ const Addspa = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const addspa = {
+    const addaboutpage = {
       ...inputs,
     };
-    console.log(addspa);
-    addSpa(addspa, dispatch);
-    toast.success("Spa Added Successfully!");
+    console.log(addaboutpage);
+    addAboutpage(addaboutpage, dispatch);
+    toast.success("devloper Added Successfully!");
   };
 
   return (
@@ -61,11 +74,25 @@ const Addspa = () => {
         gap="30px"
         gridTemplateColumns="repeat(4, minmax(0, 1fr))"
       >
+      {/* <FileBase64   
+        multiple={ false }
+        onDone={({ base64 }) => setImage({...
+        image, image: base64 })} />&nbsp; */}
         <TextField
           fullWidth
           variant="filled"
           type="text"
-          label="Services Name"
+          label="Image"
+          name="image"
+          sx={{ gridColumn: "span 2" }}
+          required
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          variant="filled"
+          type="text"
+          label="Name"
           name="name"
           sx={{ gridColumn: "span 2" }}
           required
@@ -75,8 +102,8 @@ const Addspa = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="Rating"
-          name="rating"
+          label="Email"
+          name="email"
           sx={{ gridColumn: "span 1" }}
           required
           onChange={handleChange}
@@ -85,8 +112,8 @@ const Addspa = () => {
           fullWidth
           variant="filled"
           type="number"
-          label="Price"
-          name="price"
+          label="Number"
+          name="phonenumber"
           sx={{ gridColumn: "span 1" }}
           required
           onChange={handleChange}
@@ -95,8 +122,8 @@ const Addspa = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="Description"
-          name="discription"
+          label="Message"
+          name="message"
           sx={{ gridColumn: "span 4" }}
           required
           onChange={handleChange}
@@ -109,7 +136,7 @@ const Addspa = () => {
           sx={{ gridColumn: "span 4" }}
         >
           <Button type="submit" color="secondary" variant="contained">
-            ADD Services
+            ADD 
           </Button>
         </Box>
       </Box>
@@ -118,4 +145,4 @@ const Addspa = () => {
   );
 };
 
-export default Addspa;
+export default Addaboutpage;

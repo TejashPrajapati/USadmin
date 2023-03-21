@@ -11,12 +11,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addSpa } from "../../redux/apiCalls";
+import { addMansalon } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
 
 import Header from "../../components/Header";
 
-const Addspa = () => {
+const Addmansalon = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -45,17 +45,17 @@ const Addspa = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const addspa = {
+    const addmansalon = {
       ...inputs,
     };
-    console.log(addspa);
-    addSpa(addspa, dispatch);
-    toast.success("Spa Added Successfully!");
+    console.log(addmansalon);
+    addMansalon(addmansalon, dispatch);
+    toast.success("Mansalon Added Successfully!");
   };
 
   return (
     <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
-      <Header title={`ADD SPA & MASSAGE`} subtitle="Create New  Services " />
+      <Header title={`ADD MANSALON`} subtitle="Create New  Services " />
       <Box
         display="grid"
         gap="30px"
@@ -65,7 +65,7 @@ const Addspa = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="Services Name"
+          label="Name"
           name="name"
           sx={{ gridColumn: "span 2" }}
           required
@@ -100,7 +100,7 @@ const Addspa = () => {
           sx={{ gridColumn: "span 4" }}
           required
           onChange={handleChange}
-        />
+        />  
 
         <Box
           display="flex"
@@ -118,4 +118,4 @@ const Addspa = () => {
   );
 };
 
-export default Addspa;
+export default Addmansalon;

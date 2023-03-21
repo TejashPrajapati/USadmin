@@ -9,7 +9,10 @@ import Header from "../../components/Header";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
+import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import ProgressCircle from "../../components/ProgressCircle";
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
@@ -91,52 +94,15 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
+            title="20"
+            subtitle="Users"
             progress="0.75"
             increase="+14%"
-            icon={
-              <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
-            icon={
-              <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
             icon={
               <PersonAddIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
+              
             }
           />
         </Box>
@@ -148,12 +114,51 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
+            title="50"
+            subtitle="Servises"
+            progress="0.50"
+            increase="+21%"
+            icon={
+
+              <HomeRepairServiceIcon
+                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+              />
+            }
+          />
+        </Box>
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            title="10"
+            subtitle="offers"
+            progress="0.30"
+            increase="+5%"
+            icon={
+             <LocalOfferIcon
+                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+              />
+            }
+          />
+        </Box>
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            title="80"
+            subtitle="Total"
             progress="0.80"
             increase="+43%"
             icon={
-              <TrafficIcon
+              <DataSaverOnIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -161,114 +166,7 @@ const Dashboard = () => {
         </Box>
 
         {/* ROW 2 */}
-        <Box
-          gridColumn="span 7"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          overflow="auto"
-        >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            colors={colors.grey[100]}
-            p="15px"
-          >
-            <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              New Orders
-            </Typography>
-          </Box>
-          {orders.map((order) => (
-            <Box
-              key={order._id}
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
-              p="15px"
-            >
-              <Box>
-                <Typography
-                  color={colors.greenAccent[500]}
-                  variant="h5"
-                  fontWeight="600"
-                >
-                  {order._id}
-                </Typography>
-                <Typography color={colors.grey[100]}>
-                  {format(order.createdAt)}
-                </Typography>
-              </Box>
-              <Box color={colors.grey[100]}>{order.address}</Box>
-              <Box
-                backgroundColor={colors.greenAccent[500]}
-                p="5px 10px"
-                borderRadius="4px"
-              >
-                ${order.amount}
-              </Box>
-            </Box>
-          ))}
-        </Box>
-        <Box
-          gridColumn="span 5"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          overflow="auto"
-        >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            colors={colors.grey[100]}
-            p="15px"
-          >
-            <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Recently joined Users
-            </Typography>
-          </Box>
-          {users.map((user) => (
-            <Box
-              key={user._id}
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
-              p="15px"
-            >
-              <Avatar
-                src={
-                  user.profilePic ||
-                  "https://img.freepik.com/free-icon/user_318-875902.jpg"
-                }
-                alt=""
-              />
-              <Box sx={{ width: "40%" }}>
-                <Typography
-                  color={colors.greenAccent[500]}
-                  variant="h5"
-                  fontWeight="600"
-                >
-                  {user.username}
-                </Typography>
-                <Typography color={colors.grey[100]}>{user.email}</Typography>
-              </Box>
-              <Box color={colors.grey[100]}>{format(user.createdAt)}</Box>
-              <Box
-                backgroundColor={colors.greenAccent[500]}
-                p="5px 10px"
-                borderRadius="4px"
-                sx={{ width: "15%", textAlign: "center" }}
-              >
-                Show
-              </Box>
-            </Box>
-          ))}
-        </Box>
-
-        {/* ROW 3 */}
+       
         <Box
           gridColumn="span 4"
           gridRow="span 2"

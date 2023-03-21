@@ -23,20 +23,20 @@ const aboutpageSlice = createSlice({
       state.isFetching = false;
     },
 
-    //ADD
-    // addSliderStart(state) {
-    //   state.error = false;
-    //   state.isFetching = true;
-    // },
-    // addSliderSuccess(state, action) {
-    //   state.sliders.push(action.payload);
-    //   state.isFetching = false;
-    //   state.error = false;
-    // },
-    // addSliderFailure(state) {
-    //   state.error = true;
-    //   state.isFetching = false;
-    // },
+    
+    addAboutpageStart(state) {
+      state.error = false;
+      state.isFetching = true;
+    },
+    addAboutpageSuccess(state, action) {
+      state.aboutpage.push(action.payload);
+      state.isFetching = false;
+      state.error = false;
+    },
+    addAboutpageFailure(state) {
+      state.error = true;
+      state.isFetching = false;
+    },
 
     // //DELETE
     // deleteSliderStart(state) {

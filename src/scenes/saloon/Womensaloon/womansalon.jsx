@@ -1,32 +1,35 @@
-import { Avatar, Box, Button, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Button, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import Header from "../../components/Header";
+import { tokens } from "../../../theme";
+import Header from "../../../components/Header";
 import { useEffect } from "react";
-import { getAboutpage } from "../../redux/apiCalls";
+import { getWomansalon,deleteWomansalon } from "../../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+//import { height } from "@mui/system";
 
-const AboutPage = () => {
+const GetWomansalon = (props) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+ 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getAboutpage(dispatch);
+    getWomansalon(dispatch);
   }, [dispatch]);
-  const aboutpages = useSelector((state) => state.aboutpage.aboutpage);
-  console.log(aboutpages);
+  const getwomansalon = useSelector((state) => state.womansalon.womansalon);
+  console.log(getwomansalon);
 
-  //Delete product
-  // const handleDelete = (id) => {
-  //   if (window.confirm("Are your sure you want to delete?")) {
-  //     deleteProduct(id, dispatch);
-  //   } else {
-  //     return;
-  //   }
-  // };
+  
+  // Delete product
+  const handleDelete = (id) => {
+    if (window.confirm("Are your sure you want to delete?")) {
+      deleteWomansalon(id, dispatch);
+    } else {
+      return;
+    }
+  };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 180 },
@@ -55,20 +58,21 @@ const AboutPage = () => {
       },
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "rating",
+      headerName: "Retaing",
       flex: 1,
       align: "left",
     },
     {
-      field: "phonenumber",
-      headerName: "PhoneNumber",
+      field: "price",
+      headerName: "Price",
       flex: 1,
       align: "left",
     },
+   
     {
-      field: "message",
-      headerName: "Messages",
+      field: "discription",
+      headerName: "Discription",
       flex: 1,
       align: "left",
     },
@@ -88,13 +92,12 @@ const AboutPage = () => {
         return (
           <Box display="flex" gap="10px">
             <Link
-              to={`/product/${params.row._id}`}
+              to={`/update-womansalon/${params.row._id}`}
               style={{ textDecoration: "none" }}
             >
               <Button
                 sx={{ padding: "5px", bgcolor: colors.primary[500] }}
                 variant="contained"
-                
               >
                 Edit
               </Button>
@@ -102,7 +105,7 @@ const AboutPage = () => {
             <Button
               sx={buttonSX}
               variant="contained"
-              // onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               DELETE
             </Button>
@@ -114,7 +117,8 @@ const AboutPage = () => {
 
   return (
     <Box m="20px">
-      <Header title="ABOUTPAGE" subtitle="Managing the Aboutpage" />
+      <Header title="WOMANSALON" subtitle="Managing the Womansalon" />
+      
       <Box
         m="20px 0 0 0"
         height="75vh"
@@ -147,7 +151,7 @@ const AboutPage = () => {
           },
         }}
       >
-       <Link to="/add-aboutpage" style={{ textDecoration: 'none'}}>
+      <Link to="/add-womansalon" style={{ textDecoration: 'none'}}>
        <Button  color="secondary" variant="contained"
        sx={{ margin: "5px",}}
       
@@ -157,7 +161,7 @@ const AboutPage = () => {
           </Link>
         <DataGrid
           checkboxSelection
-          rows={aboutpages}
+          rows={getwomansalon}
           getRowId={(row) => row._id}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
@@ -167,4 +171,5 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+
+export default GetWomansalon;
