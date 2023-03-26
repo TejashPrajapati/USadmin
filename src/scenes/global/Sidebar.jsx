@@ -206,8 +206,48 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="appliance"
+              to="/appliance"
+              icon={<ElectricalServicesIcon />}
+              
+              selected={selected}
+              setSelected={setSelected}
+            />
+             <Item
+              title="carpenter"
+              to="/carpenter"
+              icon={<ElectricalServicesIcon />}
+              
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="disinfection"
+              to="/disinfection"
+              icon={<ElectricalServicesIcon />}
+              
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="cleaning Services"
-              to="/cleaning"
+              to="/homecleaning"
+              icon={<CleaningServicesIcon />}
+              
+              selected={selected}
+              setSelected={setSelected}
+            />
+             <Item
+              title="Kitchan&Bathroom Cleaning"
+              to="/bathroom"
+              icon={<CleaningServicesIcon />}
+              
+              selected={selected}
+              setSelected={setSelected}
+            />
+             <Item
+              title="Plumber"
+              to="/plumber"
               icon={<CleaningServicesIcon />}
               
               selected={selected}

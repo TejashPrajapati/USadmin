@@ -11,14 +11,14 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {  updateMansalon } from "../../redux/apiCalls";
+import { updatePlumber } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
 
 import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
 
-const UpdateMansalon = () => {
-//   const theme = useTheme();
+const Updateplumber = () => {
+  const theme = useTheme();
   const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState({});
@@ -49,17 +49,17 @@ const UpdateMansalon = () => {
   // console.log("params id:",id);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatemansalon = {
+    const updateplumber = {
       ...inputs,
     };
-    console.log(updatemansalon);
-    updateMansalon(id, updatemansalon, dispatch);
-    toast.success("Electrician Update Successfully!");
+    console.log(updateplumber);
+    updatePlumber(id, updateplumber, dispatch);
+    toast.success("Plumber Update Successfully!");
   };
 
   return (
     <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
-      <Header title={`UPDATE MANSALON`} subtitle="Update  Services " />
+      <Header title={`UPDATE PLUMBER`} subtitle="Update  Services " />
       <Box
         display="grid"
         gap="30px"
@@ -95,13 +95,22 @@ const UpdateMansalon = () => {
           required
           onChange={handleChange}
         />
-        
+        <TextField
+          fullWidth
+          variant="filled"
+          type="number"
+          label="Price"
+          name="offer"
+          sx={{ gridColumn: "span 1" }}
+          required
+          onChange={handleChange}
+        />
         <TextField
           fullWidth
           variant="filled"
           type="text"
           label="Description"
-          name="discription"
+          name="description"
           sx={{ gridColumn: "span 4" }}
           required
           onChange={handleChange}
@@ -123,4 +132,4 @@ const UpdateMansalon = () => {
   );
 };
 
-export default UpdateMansalon;
+export default Updateplumber;

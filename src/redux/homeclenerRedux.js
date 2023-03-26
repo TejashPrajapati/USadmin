@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const homecleaningSlice = createSlice({
-  name: "homecleaning",
+const fullhomecleaningSlice = createSlice({
+  name: "fullhomecleaning",
   initialState: {
-    homecleaning: [],
+    fullhomecleaning: [],
     isFetching: false,
     error: false,
   },  
@@ -16,7 +16,7 @@ const homecleaningSlice = createSlice({
     getHomecleaningSuccess(state, action) {
       state.error = false;
       state.isFetching = false;
-      state.homecleaning = action.payload;
+      state.fullhomecleaning = action.payload;
     },
     getHomecleaningFailure(state) {
       state.error = true;
@@ -29,7 +29,7 @@ const homecleaningSlice = createSlice({
       state.isFetching = true;
     },
     addHomecleaningSuccess(state, action) {
-      state.homecleaning.push(action.payload);
+      state.fullhomecleaning.push(action.payload);
       state.isFetching = false;
       state.error = false;
     },
@@ -44,8 +44,8 @@ const homecleaningSlice = createSlice({
       state.isFetching = true;
     },
     deleteHomecleaningSuccess(state, action) {
-      state.homecleaning.splice(
-        state.homecleaning.findIndex((item) => item._id === action.payload),
+      state.fullhomecleaning.splice(
+        state.fullhomecleaning.findIndex((fullhomecleaning) => fullhomecleaning._id === action.payload),
         1
       );
       state.isFetching = false;
@@ -71,6 +71,6 @@ export const {
     updateHomecleaningStart,
     updateHomecleaningSuccess,
     updateHomecleaningFailure,
-  } = homecleaningSlice.actions;
+  } = fullhomecleaningSlice.actions;
 
-export default homecleaningSlice.reducer;
+export default fullhomecleaningSlice.reducer;

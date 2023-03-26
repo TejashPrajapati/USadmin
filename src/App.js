@@ -36,6 +36,22 @@ import Electrician from "./scenes/electrician";
 import UpdateElectrician from "./scenes/UpdateServices/updateelectrician";
 import Addaboutpage from "./scenes/servicesCreate/addaboutpage";
 import UpdateSpa from "./scenes/UpdateServices/updatespa";
+import Appliance from "./scenes/Appliance";
+import Carpenter from "./scenes/Carpenter";
+import Disinfection from "./scenes/Disinfection";
+import GetHomecleaning from "./scenes/Homeclener/Clener";
+import Bathroom from "./scenes/Kitchan&Bathroom";
+import Plumber from "./scenes/Plumber";
+import Addappliance from "./scenes/servicesCreate/addappliance";
+import Addcarpenter from "./scenes/servicesCreate/addcarpanter";
+import Adddisinfiction from "./scenes/servicesCreate/adddisinfection";
+import Addbathroom from "./scenes/servicesCreate/addkitchan";
+import Addplumber from "./scenes/servicesCreate/addplumber";
+import Updateappliance from "./scenes/UpdateServices/updateappliance";
+import Updatebathroom from "./scenes/UpdateServices/updatebathroom";
+import Updatecarpenter from "./scenes/UpdateServices/updatecarpenter";
+import Updatedisinfection from "./scenes/UpdateServices/updatedisinfection";
+import Updateplumber from "./scenes/UpdateServices/updateplumber";
 
 
 function App() {
@@ -49,7 +65,7 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {user  ? (
+        {user ? (
           <div className="app">
             <Sidebar isSidebar={isSidebar} />
             <main className="content">
@@ -85,6 +101,22 @@ function App() {
                 <Route path="/update-electrician/:id" element={<UpdateElectrician />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/geography" element={<Geography />} />
+                <Route path="/appliance" element={<Appliance />} />
+                <Route path="/carpenter" element={<Carpenter />} />
+                <Route path="/disinfection" element={<Disinfection />} />
+                <Route path="/homecleaning" element={<GetHomecleaning />} />
+                <Route path="/bathroom" element={<Bathroom />} />
+                <Route path="/plumber" element={<Plumber />} />
+                <Route path="/add-addappliance" element={<Addappliance/>} />
+                <Route path="/add-carpenter" element={<Addcarpenter/>} />
+                <Route path="/add-disinfiction" element={<Adddisinfiction/>} />
+                <Route path="/add-bathroom" element={<Addbathroom/>} />
+                <Route path="/add-plumber" element={<Addplumber/>} />
+                <Route path="/edit-appliance/:id" element={<Updateappliance/>} />
+                <Route path="/update-bathroom/:id" element={<Updatebathroom/>} />
+                <Route path="/update-carpenter/:id" element={<Updatecarpenter/>} />
+                <Route path="/update-disinfection/:id" element={<Updatedisinfection/>} />
+                <Route path="/update-plumber/:id" element={<Updateplumber/>} />
               </Routes>
             </main>
           </div>

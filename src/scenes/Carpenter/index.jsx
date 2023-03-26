@@ -3,31 +3,29 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useEffect } from "react";
-import { getHomecleaning,deleteHomecleaning } from "../../redux/apiCalls";
+import { getCarpenter, deleteCarpenter  } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //import { height } from "@mui/system";
 
-const GetHomecleaning = (props) => {
+const Carpenter = (props) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+ 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getHomecleaning(dispatch);
+    getCarpenter(dispatch);
   }, [dispatch]);
-  const gethomecleaning = useSelector((state) => state.fullhomecleaning
-  .fullhomecleaning
-  );
-  console.log(gethomecleaning);
+  const getcarpenter = useSelector((state) => state.carpenter.carpenter);
+  console.log(getcarpenter);
 
   
   // Delete product
   const handleDelete = (id) => {
     if (window.confirm("Are your sure you want to delete?")) {
-      deleteHomecleaning(id, dispatch);
+        deleteCarpenter(id, dispatch);
     } else {
       return;
     }
@@ -71,9 +69,14 @@ const GetHomecleaning = (props) => {
       flex: 1,
       align: "left",
     },
-   
     {
-      field: "discription",
+        field: "offer",
+        headerName: "Offer",
+        flex: 1,
+        align: "left",
+      },
+    {
+      field: "description",
       headerName: "Discription",
       flex: 1,
       align: "left",
@@ -94,7 +97,7 @@ const GetHomecleaning = (props) => {
         return (
           <Box display="flex" gap="10px">
             <Link
-              to={`/product/${params.row._id}`}
+              to={`/update-carpenter/${params.row._id}`}
               style={{ textDecoration: "none" }}
             >
               <Button
@@ -119,7 +122,7 @@ const GetHomecleaning = (props) => {
 
   return (
     <Box m="20px">
-      <Header title="WOMANSALON" subtitle="Managing the Womansalon" />
+      <Header title="CARPENTER" subtitle="Managing the Carpenter" />
       
       <Box
         m="20px 0 0 0"
@@ -153,7 +156,7 @@ const GetHomecleaning = (props) => {
           },
         }}
       >
-      <Link to="/add-womansalon" style={{ textDecoration: 'none'}}>
+      <Link to="/add-carpenter" style={{ textDecoration: 'none'}}>
        <Button  color="secondary" variant="contained"
        sx={{ margin: "5px",}}
       
@@ -163,7 +166,7 @@ const GetHomecleaning = (props) => {
           </Link>
         <DataGrid
           checkboxSelection
-          rows={gethomecleaning}
+          rows={getcarpenter}
           getRowId={(row) => row._id}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
@@ -174,4 +177,4 @@ const GetHomecleaning = (props) => {
 };
 
 
-export default GetHomecleaning;
+export default Carpenter;

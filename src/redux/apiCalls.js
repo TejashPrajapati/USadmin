@@ -1,99 +1,115 @@
 import axios from "axios";
 import {
-  getSlidersFailure,
-  getSlidersStart,
-  getSlidersSuccess,
+  getSlidersFailure,getSlidersStart,getSlidersSuccess,
 } from "./sliderRedux";
 import {
-  getAboutpageFailure,
-  getAboutpageStart,
-  getAboutpageSuccess,
+  getAboutpageFailure,getAboutpageStart,getAboutpageSuccess,
 } from "./aboutpageRedux";
 import {
-  getSpaFailure,
-  getSpaStart,
-  getSpaSuccess,
-  deleteSpaStart,
-  deleteSpaSuccess,
-  deleteSpaFailure,
-  addSpaStart,
-  addSpaSuccess,
-  addSpaFailure,
-  updateSpaStart,
-  updateSpaSuccess,
-  updateSpaFailure,
+  getSpaFailure,getSpaStart,getSpaSuccess,deleteSpaStart,deleteSpaSuccess,deleteSpaFailure,addSpaStart,addSpaSuccess,addSpaFailure,updateSpaStart,updateSpaSuccess,updateSpaFailure,
 } from "./addspaRedux";
-import { loginFaliure, loginStart, loginSuccess } from "./userRedux";
+import { loginFaliure, loginStart, loginSuccess,getloginStart,getloginFailure,getloginSuccess } from "./userRedux";
 import {
-  getElectricianFailure,
-  getElectricianStart,
-  getElectricianSuccess,
-  addElectricianFailure,
-  addElectricianStart,
-  addElectricianSuccess,
-  updateElectricianStart,
-    updateElectricianSuccess,
-    updateElectricianFailure,
-    deleteElectricianStart,
-    deleteElectricianSuccess,
-    deleteElectricianFailure,
+  getElectricianFailure,getElectricianStart,getElectricianSuccess,addElectricianFailure,addElectricianStart,addElectricianSuccess,updateElectricianStart,updateElectricianSuccess,updateElectricianFailure,deleteElectricianStart,deleteElectricianSuccess,deleteElectricianFailure,
 } from "./electricianRedux";
 import {
-  addAboutpageFailure,
-  addAboutpageStart,
-  addAboutpageSuccess,
+  addAboutpageFailure,addAboutpageStart,addAboutpageSuccess,
 } from "./aboutpageRedux";
 import {
-  getMansalonFailure,
-  getMansalonStart,
-  getMansalonSuccess,
-  addMansalonFailure,
-  addMansalonStart,
-  addMansalonSuccess,
-  updateMansalonStart,
-  updateMansalonSuccess,
-  updateMansalonFailure,
-  deleteMansalonStart,
-    deleteMansalonSuccess,
-    deleteMansalonFailure,
+  getMansalonFailure,getMansalonStart,getMansalonSuccess,addMansalonFailure,addMansalonStart,addMansalonSuccess,updateMansalonStart,updateMansalonSuccess,updateMansalonFailure,deleteMansalonStart,deleteMansalonSuccess,deleteMansalonFailure,
 } from "./mansalonRedux";
 import {
-  getWomansalonFailure,
-  getWomansalonStart,
-  getWomansalonSuccess,
-  deleteWomansalonStart,
-  deleteWomansalonSuccess,
-  deleteWomansalonFailure,
-  addWomansalonStart,
-  addWomansalonSuccess,
-  addWomansalonFailure,
-  updateWomansalonStart,
-  updateWomansalonSuccess,
-  updateWomansalonFailure,
+  getWomansalonFailure,getWomansalonStart,getWomansalonSuccess,deleteWomansalonStart,deleteWomansalonSuccess,deleteWomansalonFailure,addWomansalonStart,addWomansalonSuccess,addWomansalonFailure,updateWomansalonStart,updateWomansalonSuccess,updateWomansalonFailure,
 } from "./womanRedux";
 import {
-  getHomecleaningFailure,
-  getHomecleaningStart,
-  getHomecleaningSuccess,
-  deleteHomecleaningStart,
-  deleteHomecleaningSuccess,
-  deleteHomecleaningFailure,
-  addHomecleaningStart,
-  addHomecleaningSuccess,
-  addHomecleaningFailure,
-  updateHomecleaningStart,
-  updateHomecleaningSuccess,
-  updateHomecleaningFailure,
+  getHomecleaningFailure,getHomecleaningStart,getHomecleaningSuccess,deleteHomecleaningStart,deleteHomecleaningSuccess,deleteHomecleaningFailure,addHomecleaningStart,addHomecleaningSuccess,addHomecleaningFailure,updateHomecleaningStart,updateHomecleaningSuccess,updateHomecleaningFailure,
 } from "./homeclenerRedux";
+import{
+  getApplianceFailure,
+    getApplianceStart,
+    getApplianceSuccess,
+    deleteApplianceStart,
+    deleteApplianceSuccess,
+    deleteApplianceFailure,
+    addApplianceStart,
+    addApplianceSuccess,
+    addApplianceFailure,
+    updateApplianceStart,
+    updateApplianceSuccess,
+    updateApplianceFailure,
+} from "./applianceRedux"
+import {
+  getCarpenterFailure,
+  getCarpenterStart,
+  getCarpenterSuccess,
+  deleteCarpenterStart,
+  deleteCarpenterSuccess,
+  deleteCarpenterFailure,
+  addCarpenterStart,
+  addCarpenterSuccess,
+  addCarpenterFailure,
+  updateCarpenterStart,
+  updateCarpenterSuccess,
+  updateCarpenterFailure,
+} from "./carpenterRedux";
+import {  getDisinfectionFailure,
+  getDisinfectionStart,
+  getDisinfectionSuccess,
+  deleteDisinfectionStart,
+  deleteDisinfectionSuccess,
+  deleteDisinfectionFailure,
+  addDisinfectionStart,
+  addDisinfectionSuccess,
+  addDisinfectionFailure,
+  updateDisinfectionStart,
+  updateDisinfectionSuccess,
+  updateDisinfectionFailure, } from "./disinfectionRedux";
+
+  import {  getBathroomFailure,
+    getBathroomStart,
+    getBathroomSuccess,
+    deleteBathroomStart,
+    deleteBathroomSuccess,
+    deleteBathroomFailure,
+    addBathroomStart,
+    addBathroomSuccess,
+    addBathroomFailure,
+    updateBathroomStart,
+    updateBathroomSuccess,
+    updateBathroomFailure, } from "./KitchenRedux";
+
+    import {  getPlumberFailure,
+      getPlumberStart,
+      getPlumberSuccess,
+      deletePlumberStart,
+      deletePlumberSuccess,
+      deletePlumberFailure,
+      addPlumberStart,
+      addPlumberSuccess,
+      addPlumberFailure,
+      updatePlumberStart,
+      updatePlumberSuccess,
+      updatePlumberFailure, } from "./plumberRedux";
 
 //Login
-export const login = async (dispatch, user) => {
-  dispatch(loginStart());
+// export const login = async (dispatch, user) => {
+//   dispatch(loginStart());
+//   try {
+//     const res = await axios.post("/auth/user", user);
+//     dispatch(loginSuccess(res.data));
+//   } catch (error) {
+//     dispatch(loginFaliure());
+//   }
+// };
+
+export const getLogin = async (dispatch) => {
+  dispatch(getloginStart());
   try {
-    const res = await axios.post("/auth/user", user);
-    dispatch(loginSuccess(res.data));
+    const res = await axios.get("/auth");
+    dispatch(getloginSuccess(res.data));
+    console.log(res.data);
   } catch (error) {
-    dispatch(loginFaliure());
+    dispatch(getloginFailure());
   }
 };
 
@@ -204,17 +220,7 @@ export const deleteMansalon = async (id, dispatch) => {
   }
 };
 
-//Fetch Homecleaning
-export const getHomecleaning = async (dispatch) => {
-  dispatch(getHomecleaningStart());
-  try {
-    const res = await axios.get("/homecleaning");
-    dispatch(getHomecleaningSuccess(res.data));
-    // console.log(res.data);
-  } catch (error) {
-    dispatch(getHomecleaningFailure());
-  }
-};
+
 
 //Add product
 export const addSpa = async (product, dispatch) => {
@@ -308,5 +314,283 @@ export const updateSpa = async (id, updatedList, dispatch) => {
     dispatch(updateSpaSuccess(id, updatedList, res));
   } catch (error) {
     dispatch(updateSpaFailure());
+  }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// GET ALL APPLIANCE
+export const getAppliance = async (dispatch) => {
+  dispatch(getApplianceStart());
+  try {
+    const res = await axios.get("/appliance");
+    dispatch(getApplianceSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getApplianceFailure());
+  }
+};
+
+//ADD APPLIANCE
+export const addAppliance = async (product, dispatch) => {
+  dispatch(addApplianceStart());
+  try {
+    const res = await axios.post("/appliance", product, {});
+    dispatch(addApplianceSuccess(res.data));
+  } catch (error) {
+    dispatch(addApplianceFailure());
+  }
+};
+
+//DELETE APPLIANCE
+export const deleteAppliance = async (id, dispatch) => {
+  dispatch(deleteApplianceStart());
+  try {
+    await axios.delete("/appliance/" + id, {});
+    dispatch(deleteApplianceSuccess(id));
+  } catch (error) {
+    dispatch(deleteApplianceFailure());
+  }
+};
+
+// UPDATE APPLIANCE
+export const updateAppliance = async (id, updatedList, dispatch) => {
+  dispatch(updateApplianceStart());
+  try {
+    const res = await axios.put("/appliance/" + id, updatedList, {});
+    dispatch(updateApplianceSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updateApplianceFailure());
+  }
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// GET ALL CARPENTER
+export const getCarpenter = async (dispatch) => {
+  dispatch(getCarpenterStart());
+  try {
+    const res = await axios.get("/carpenter");
+    dispatch(getCarpenterSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getCarpenterFailure());
+  }
+};
+
+//ADD CARPENTER
+export const addCarpenter = async (product, dispatch) => {
+  dispatch(addCarpenterStart());
+  try {
+    const res = await axios.post("/carpenter", product, {});
+    dispatch(addCarpenterSuccess(res.data));
+  } catch (error) {
+    dispatch(addCarpenterFailure());
+  }
+};
+
+//DELETE CARPENTER
+export const deleteCarpenter = async (id, dispatch) => {
+  dispatch(deleteApplianceStart());
+  try {
+    await axios.delete("/carpenter/" + id, {});
+    dispatch(deleteCarpenterSuccess(id));
+  } catch (error) {
+    dispatch(deleteCarpenterFailure());
+  }
+};
+
+// UPDATE CARPENTER
+export const updateCarpenter = async (id, updatedList, dispatch) => {
+  dispatch(updateCarpenterStart());
+  try {
+    const res = await axios.put("/carpenter/" + id, updatedList, {});
+    dispatch(updateCarpenterSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updateCarpenterFailure());
+  }
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// GET ALL DISINFETION
+export const getDisinfection = async (dispatch) => {
+  dispatch(getDisinfectionStart());
+  try {
+    const res = await axios.get("/disinfection");
+    dispatch(getDisinfectionSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getDisinfectionFailure());
+  }
+};
+
+//ADD DISINFETION
+export const addDisinfection = async (product, dispatch) => {
+  dispatch(addCarpenterStart());
+  try {
+    const res = await axios.post("/disinfection", product, {});
+    dispatch(addDisinfectionSuccess(res.data));
+  } catch (error) {
+    dispatch(addDisinfectionFailure());
+  }
+};
+
+//DELETE DISINFETION
+export const deleteDisinfection = async (id, dispatch) => {
+  dispatch(deleteApplianceStart());
+  try {
+    await axios.delete("/disinfection/" + id, {});
+    dispatch(deleteDisinfectionSuccess(id));
+  } catch (error) {
+    dispatch(deleteDisinfectionFailure());
+  }
+};
+
+// UPDATE DISINFETION
+export const updateDisinfection = async (id, updatedList, dispatch) => {
+  dispatch(updateDisinfectionStart());
+  try {
+    const res = await axios.put("/disinfection/" + id, updatedList, {});
+    dispatch(updateDisinfectionSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updateDisinfectionFailure());
+  }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Fetch HOMECLEANING
+export const getHomecleaning = async (dispatch) => {
+  dispatch(getHomecleaningStart());
+  try {
+    const res = await axios.get("/fullhomecleaning");
+    dispatch(getHomecleaningSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getHomecleaningFailure());
+  }
+};
+
+//ADD HOMECLEANING
+export const addHomecleaning = async (product, dispatch) => {
+  dispatch(addHomecleaningStart());
+  try {
+    const res = await axios.post("/fullhomecleaning", product, {});
+    dispatch(addHomecleaningSuccess(res.data));
+  } catch (error) {
+    dispatch(addHomecleaningFailure());
+  }
+};
+
+//DELETE HOMECLEANING
+export const deleteHomecleaning = async (id, dispatch) => {
+  dispatch(deleteApplianceStart());
+  try {
+    await axios.delete("/fullhomecleaning/" + id, {});
+    dispatch(deleteHomecleaningSuccess(id));
+  } catch (error) {
+    dispatch(deleteHomecleaningFailure());
+  }
+};
+
+// UPDATE HOMECLEANING
+export const updateHomecleaning = async (id, updatedList, dispatch) => {
+  dispatch(updateHomecleaning());
+  try {
+    const res = await axios.put("/fullhomecleaning/" + id, updatedList, {});
+    dispatch(updateHomecleaningSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updateHomecleaningFailure());
+  }
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// GET ALL KITCHAN AND BATHROOM
+export const getBathroom = async (dispatch) => {
+  dispatch(getBathroomStart());
+  try {
+    const res = await axios.get("/bathroom");
+    dispatch(getBathroomSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getBathroomFailure());
+  }
+};
+
+//ADD KITCHAN AND BATHROOM
+export const addBathroom = async (product, dispatch) => {
+  dispatch(addBathroomStart());
+  try {
+    const res = await axios.post("/bathroom", product, {});
+    dispatch(addBathroomSuccess(res.data));
+  } catch (error) {
+    dispatch(addBathroomFailure());
+  }
+};
+
+//DELETE KITCHAN AND BATHROOM
+export const deleteBathroom = async (id, dispatch) => {
+  dispatch(deleteBathroomStart());
+  try {
+    await axios.delete("/bathroom/" + id, {});
+    dispatch(deleteBathroomSuccess(id));
+  } catch (error) {
+    dispatch(deleteBathroomFailure());
+  }
+};
+
+// UPDATE KITCHAN AND BATHROOM
+export const updateBathroom = async (id, updatedList, dispatch) => {
+  dispatch(updateBathroomStart());
+  try {
+    const res = await axios.put("/bathroom/" + id, updatedList, {});
+    dispatch(updateBathroomSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updateBathroomFailure());
+  }
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// GET ALL PLUMBER
+export const getPlumber = async (dispatch) => {
+  dispatch(getBathroomStart());
+  try {
+    const res = await axios.get("/plumber");
+    dispatch(getPlumberSuccess(res.data));
+    // console.log(res.data);
+  } catch (error) {
+    dispatch(getPlumberFailure());
+  }
+};
+
+//ADD PLUMBER
+export const addPlumber = async (product, dispatch) => {
+  dispatch(addBathroomStart());
+  try {
+    const res = await axios.post("/plumber", product, {});
+    dispatch(addPlumberSuccess(res.data));
+  } catch (error) {
+    dispatch(addPlumberFailure());
+  }
+};
+
+//DELETE PLUMBER
+export const deletePlumber = async (id, dispatch) => {
+  dispatch(deletePlumberStart());
+  try {
+    await axios.delete("/plumber/" + id, {});
+    dispatch(deletePlumberSuccess(id));
+  } catch (error) {
+    dispatch(deletePlumberFailure());
+  }
+};
+
+// UPDATE PLUMBER
+export const updatePlumber = async (id, updatedList, dispatch) => {
+  dispatch(updatePlumberStart());
+  try {
+    const res = await axios.put("/plumber/" + id, updatedList, {});
+    dispatch(updatePlumberSuccess(id, updatedList, res));
+  } catch (error) {
+    dispatch(updatePlumberFailure());
   }
 };

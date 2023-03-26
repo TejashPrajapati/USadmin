@@ -20,6 +20,11 @@ import electricianRedux from "./electricianRedux";
 import mansalonRedux from "./mansalonRedux";
 import womanRedux from "./womanRedux";
 import homeclenerRedux from "./homeclenerRedux";
+import applianceRedux from "./applianceRedux";
+import carpenterRedux from "./carpenterRedux";
+import disinfectionRedux from "./disinfectionRedux";
+import KitchenRedux from "./KitchenRedux";
+import plumberRedux from "./plumberRedux";
 
 const persistConfig = {
   key: "root",
@@ -27,7 +32,7 @@ const persistConfig = {
   storage,
 };
 const rootReducer = combineReducers({
-  user: userReducer,
+  auth: userReducer,
   products: productReducer,
   sliders: sliderReducer,
   aboutpage: aboutpageReducer,
@@ -35,7 +40,12 @@ const rootReducer = combineReducers({
   electrician: electricianRedux,
   mansalon: mansalonRedux,
   womansalon:womanRedux,
-  homecleaning:homeclenerRedux,
+  fullhomecleaning:homeclenerRedux,
+  appliance:applianceRedux,
+  carpenter:carpenterRedux,
+  disinfection:disinfectionRedux,
+  bathroom:KitchenRedux,
+  plumber:plumberRedux
 });
 
 

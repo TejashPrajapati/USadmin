@@ -1,13 +1,24 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { getLogin } from "../../redux/apiCalls";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getLogin(dispatch);
+  }, [dispatch]);
+  const getlogin = useSelector((state) => state.auth.auth);
+  console.log(getlogin);
+
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -19,20 +30,15 @@ const Contacts = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
+      field: "email",
+      headerName: "Email",
+      type: "text",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
+      field: "dob",
+      headerName: "DOB",
       flex: 1,
     },
     {
@@ -40,16 +46,7 @@ const Contacts = () => {
       headerName: "Address",
       flex: 1,
     },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
-    },
+    
   ];
 
   return (
@@ -91,7 +88,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={getlogin}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />

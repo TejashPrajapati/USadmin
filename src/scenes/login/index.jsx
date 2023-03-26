@@ -9,7 +9,8 @@ import Container from "@mui/material/Container";
 import { useTheme } from "@emotion/react";
 import { tokens } from "../../theme";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/apiCalls";
 
 export default function Login() {
@@ -17,13 +18,36 @@ export default function Login() {
   const colors = tokens(theme.palette.mode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const { isFetching, error } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    login(dispatch, { username,email, password });
-  };
+  const navigate = useNavigate();
+  
+ 
+  useEffect(() =>{
+    const auth = localStorage.getItem('user');
+    if(auth){
+        navigate("/")
+    }
+},[])
+ 
+  const handleLogin= async ()=>{
+    console.warn("email,password",email,password)
+    let result = await fetch('http://localhost:4000/api/user',{
+        method:'post',
+        body:JSON.stringify({email,password}),
+        headers:{
+            'Content-Type':'application/json'
+        }
+    });
+    result = await result.json();
+    console.warn(result)
+    if(result.auth){
+        localStorage.setItem("user",JSON.stringify(result.user));
+        localStorage.setItem("token",JSON.stringify(result.auth));
+        
+        navigate("/")
+    }else{
+        alert("please enter a correct details")
+    }
+}
 
   return (
     <Container
@@ -51,7 +75,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Admin Log in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form"  noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -80,12 +104,12 @@ export default function Login() {
               backgroundColor: colors.primary[700],
             }}
           />
-          {error && <span style={{ color: "red" }}>Something went wrong</span>}
+          
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            disabled={isFetching}
+            onClick={handleLogin}
             sx={{
               mt: 3,
               mb: 2,
