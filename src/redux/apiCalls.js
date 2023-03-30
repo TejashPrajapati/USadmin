@@ -91,16 +91,16 @@ import {  getDisinfectionFailure,
       updatePlumberSuccess,
       updatePlumberFailure, } from "./plumberRedux";
 
-//Login
-// export const login = async (dispatch, user) => {
-//   dispatch(loginStart());
-//   try {
-//     const res = await axios.post("/auth/user", user);
-//     dispatch(loginSuccess(res.data));
-//   } catch (error) {
-//     dispatch(loginFaliure());
-//   }
-// };
+// Login
+export const login = async (dispatch, user) => {
+  dispatch(loginStart());
+  try {
+    const res = await axios.post("/admin/login", user);
+    dispatch(loginSuccess(res.data));
+  } catch (error) {
+    dispatch(loginFaliure());
+  }
+};
 
 export const getLogin = async (dispatch) => {
   dispatch(getloginStart());

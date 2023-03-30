@@ -58,14 +58,14 @@ function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
-  // const user = useSelector((state) => state.user.user);
-  const user = true;
+  const user = useSelector((state) => state.auth.auth);
+  // const user = localStorage.getItem("user");
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {user ? (
+        {user  && user ? (
           <div className="app">
             <Sidebar isSidebar={isSidebar} />
             <main className="content">

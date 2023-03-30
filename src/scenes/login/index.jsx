@@ -19,35 +19,19 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
- 
-  useEffect(() =>{
-    const auth = localStorage.getItem('user');
-    if(auth){
-        navigate("/")
+
+  useEffect(() => {
+    const auth = localStorage.getItem("user");
+    if (auth) {
+      navigate("/");
     }
-},[])
- 
-  const handleLogin= async ()=>{
-    console.warn("email,password",email,password)
-    let result = await fetch('http://localhost:4000/api/user',{
-        method:'post',
-        body:JSON.stringify({email,password}),
-        headers:{
-            'Content-Type':'application/json'
-        }
-    });
-    result = await result.json();
-    console.warn(result)
-    if(result.auth){
-        localStorage.setItem("user",JSON.stringify(result.user));
-        localStorage.setItem("token",JSON.stringify(result.auth));
-        
-        navigate("/")
-    }else{
-        alert("please enter a correct details")
-    }
-}
+  }, []);
+
+  const dispatch = useDispatch();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(dispatch, { email, password });
+  };
 
   return (
     <Container
@@ -75,7 +59,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Admin Log in
         </Typography>
-        <Box component="form"  noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -104,7 +88,7 @@ export default function Login() {
               backgroundColor: colors.primary[700],
             }}
           />
-          
+
           <Button
             type="submit"
             fullWidth

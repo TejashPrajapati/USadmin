@@ -9,8 +9,10 @@ import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import ManIcon from '@mui/icons-material/Man';
 import WomanIcon from '@mui/icons-material/Woman';
 import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
+import MicrowaveIcon from '@mui/icons-material/Microwave';
 
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import CarpenterIcon from '@mui/icons-material/Carpenter';
 
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -23,6 +25,9 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { AddBoxOutlined, Inventory2Outlined } from "@mui/icons-material";
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import KitchenIcon from '@mui/icons-material/Kitchen';
+import PlumbingIcon from '@mui/icons-material/Plumbing';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -208,7 +213,7 @@ const Sidebar = () => {
             <Item
               title="appliance"
               to="/appliance"
-              icon={<ElectricalServicesIcon />}
+              icon={<MicrowaveIcon />}
               
               selected={selected}
               setSelected={setSelected}
@@ -216,7 +221,7 @@ const Sidebar = () => {
              <Item
               title="carpenter"
               to="/carpenter"
-              icon={<ElectricalServicesIcon />}
+              icon={<CarpenterIcon />}
               
               selected={selected}
               setSelected={setSelected}
@@ -224,7 +229,7 @@ const Sidebar = () => {
             <Item
               title="disinfection"
               to="/disinfection"
-              icon={<ElectricalServicesIcon />}
+              icon={<HealthAndSafetyIcon />}
               
               selected={selected}
               setSelected={setSelected}
@@ -240,7 +245,7 @@ const Sidebar = () => {
              <Item
               title="Kitchan&Bathroom Cleaning"
               to="/bathroom"
-              icon={<CleaningServicesIcon />}
+              icon={<KitchenIcon />}
               
               selected={selected}
               setSelected={setSelected}
@@ -248,7 +253,7 @@ const Sidebar = () => {
              <Item
               title="Plumber"
               to="/plumber"
-              icon={<CleaningServicesIcon />}
+              icon={<PlumbingIcon />}
               
               selected={selected}
               setSelected={setSelected}
