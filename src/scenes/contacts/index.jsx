@@ -2,14 +2,16 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { getLogin } from "../../redux/apiCalls";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
+import axios from "axios";
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [users, setUsers] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -19,9 +21,18 @@ const Contacts = () => {
   const getlogin = useSelector((state) => state.auth.auth);
   console.log(getlogin);
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const res = await axios.get("/users");
+      setUsers(res.data);
+    };
+    getUsers();
+  }, []);
+
+  console.log(users);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "_id", headerName: "ID", flex: 0.5 },
     { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "name",
@@ -46,7 +57,6 @@ const Contacts = () => {
       headerName: "Address",
       flex: 1,
     },
-    
   ];
 
   return (
@@ -88,9 +98,10 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={getlogin}
+          rows={users}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
+          getRowId={(r) => r._id}
         />
       </Box>
     </Box>
