@@ -52,6 +52,7 @@ import Updatebathroom from "./scenes/UpdateServices/updatebathroom";
 import Updatecarpenter from "./scenes/UpdateServices/updatecarpenter";
 import Updatedisinfection from "./scenes/UpdateServices/updatedisinfection";
 import Updateplumber from "./scenes/UpdateServices/updateplumber";
+import Booking from "./scenes/Booking";
 
 
 function App() {
@@ -117,6 +118,7 @@ function App() {
                 <Route path="/update-carpenter/:id" element={<Updatecarpenter/>} />
                 <Route path="/update-disinfection/:id" element={<Updatedisinfection/>} />
                 <Route path="/update-plumber/:id" element={<Updateplumber/>} />
+                <Route path="/bookings" element={<Booking/>} />
               </Routes>
             </main>
           </div>

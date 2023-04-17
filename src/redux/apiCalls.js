@@ -91,6 +91,13 @@ import {  getDisinfectionFailure,
       updatePlumberSuccess,
       updatePlumberFailure, } from "./plumberRedux";
 
+import {   getBookingFailure,
+  getBookingStart,
+  getBookingSuccess,
+  deleteBookingStart,
+  deleteBookingSuccess,
+  deleteBookingFailure,} from "./bookingRedux"
+
 // Login
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -110,6 +117,27 @@ export const getLogin = async (dispatch) => {
     console.log(res.data);
   } catch (error) {
     dispatch(getloginFailure());
+  }
+};
+//Fetch Booking
+export const getBooking = async (dispatch) => {
+  dispatch(getBookingStart());
+  try {
+    const res = await axios.get("/booking");
+    dispatch(getBookingSuccess(res.data));
+    console.log(res.data);
+  } catch (error) {
+    dispatch(getBookingFailure());
+  }
+};
+//Delete Booking
+export const deleteBooking = async (id, dispatch) => {
+  dispatch(deleteBookingStart());
+  try {
+    await axios.delete("/booking/" + id, {});
+    dispatch(deleteBookingSuccess(id));
+  } catch (error) {
+    dispatch(deleteBookingFailure());
   }
 };
 

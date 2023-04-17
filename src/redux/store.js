@@ -25,6 +25,7 @@ import carpenterRedux from "./carpenterRedux";
 import disinfectionRedux from "./disinfectionRedux";
 import KitchenRedux from "./KitchenRedux";
 import plumberRedux from "./plumberRedux";
+import bookingRedux from "./bookingRedux";
 
 const persistConfig = {
   key: "root",
@@ -45,7 +46,8 @@ const rootReducer = combineReducers({
   carpenter:carpenterRedux,
   disinfection:disinfectionRedux,
   bathroom:KitchenRedux,
-  plumber:plumberRedux
+  plumber:plumberRedux,
+  booking:bookingRedux
 });
 
 

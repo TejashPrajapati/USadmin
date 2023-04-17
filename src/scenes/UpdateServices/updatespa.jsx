@@ -9,11 +9,11 @@ import {
   // Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateSpa } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
-
+import axios from "axios";
 import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
 
@@ -56,6 +56,18 @@ const UpdateSpa = () => {
     updateSpa(id, updatespa, dispatch);
     toast.success("Spa Update Successfully!");
   };
+
+  const [spas, setSpas] = useState([])
+
+  useEffect(() => {
+    const getSpas = async () => {
+      const res = axios.get("/spa/", id);
+      setSpas(res.data)
+    }
+    getSpas()
+  }, [])
+
+  console.log(spas);
 
   return (
     <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
