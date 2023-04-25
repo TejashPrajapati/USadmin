@@ -47,7 +47,7 @@ const rootReducer = combineReducers({
   disinfection:disinfectionRedux,
   bathroom:KitchenRedux,
   plumber:plumberRedux,
-  booking:bookingRedux
+  bookings:bookingRedux,
 });
 
 

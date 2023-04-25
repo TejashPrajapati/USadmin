@@ -47,6 +47,7 @@ import Addcarpenter from "./scenes/servicesCreate/addcarpanter";
 import Adddisinfiction from "./scenes/servicesCreate/adddisinfection";
 import Addbathroom from "./scenes/servicesCreate/addkitchan";
 import Addplumber from "./scenes/servicesCreate/addplumber";
+import Addslider from "./scenes/servicesCreate/addslider";
 import Updateappliance from "./scenes/UpdateServices/updateappliance";
 import Updatebathroom from "./scenes/UpdateServices/updatebathroom";
 import Updatecarpenter from "./scenes/UpdateServices/updatecarpenter";
@@ -96,6 +97,7 @@ function App() {
                 <Route path="/line" element={<Line />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/add-spa/" element={<Addspa />} />
+                <Route path="/add-slider/" element={<Addslider />} />
                 <Route path="/update-spa/:id" element={<UpdateSpa />} />
                 <Route path="/electrician" element={<Electrician />} />
                 <Route path="/add-electrician/" element={<Addelectrician />} />
@@ -118,7 +120,7 @@ function App() {
                 <Route path="/update-carpenter/:id" element={<Updatecarpenter/>} />
                 <Route path="/update-disinfection/:id" element={<Updatedisinfection/>} />
                 <Route path="/update-plumber/:id" element={<Updateplumber/>} />
-                <Route path="/bookings" element={<Booking/>} />
+                <Route path="/booking" element={<Booking/>} />
               </Routes>
             </main>
           </div>

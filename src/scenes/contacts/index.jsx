@@ -15,6 +15,11 @@ const Contacts = () => {
 
   const dispatch = useDispatch();
 
+
+ 
+
+  
+
   useEffect(() => {
     getLogin(dispatch);
   }, [dispatch]);
@@ -62,8 +67,8 @@ const Contacts = () => {
   return (
     <Box m="20px">
       <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
+        title="USER DETAILS"
+        subtitle="List out Login Users"
       />
       <Box
         m="40px 0 0 0"

@@ -1,6 +1,11 @@
 import axios from "axios";
 import {
-  getSlidersFailure,getSlidersStart,getSlidersSuccess,
+  getSlidersFailure,getSlidersStart,getSlidersSuccess,deleteSliderStart,
+  deleteSliderSuccess,
+  deleteSliderFailure,
+  addSliderStart,
+  addSliderSuccess,
+  addSliderFailure
 } from "./sliderRedux";
 import {
   getAboutpageFailure,getAboutpageStart,getAboutpageSuccess,
@@ -150,6 +155,27 @@ export const getSliders = async (dispatch) => {
     console.log(res.data);
   } catch (error) {
     dispatch(getSlidersFailure());
+  }
+};
+
+//ADD Slider
+export const addSliders = async (product, dispatch) => {
+  dispatch(addSliderStart());
+  try {
+    const res = await axios.post("/sliders", product, {});
+    dispatch(addSliderSuccess(res.data));
+  } catch (error) {
+    dispatch(addSliderFailure());
+  }
+};
+//Delete Sliders
+export const deleteSliders = async (id, dispatch) => {
+  dispatch(deleteSliderStart());
+  try {
+    await axios.delete("/sliders/" + id, {});
+    dispatch(deleteSliderSuccess(id));
+  } catch (error) {
+    dispatch(deleteSliderFailure());
   }
 };
 

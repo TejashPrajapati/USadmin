@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useEffect } from "react";
-import { getSliders } from "../../redux/apiCalls";
+import { getSliders, deleteSliders } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -19,14 +19,14 @@ const Sliders = () => {
   const sliders = useSelector((state) => state.sliders.sliders);
   console.log(sliders);
 
-  //Delete product
-  // const handleDelete = (id) => {
-  //   if (window.confirm("Are your sure you want to delete?")) {
-  //     deleteProduct(id, dispatch);
-  //   } else {
-  //     return;
-  //   }
-  // };
+  // Delete product
+  const handleDelete = (id) => {
+    if (window.confirm("Are your sure you want to delete?")) {
+      deleteSliders(id, dispatch);
+    } else {
+      return;
+    }
+  };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 180 },
@@ -83,7 +83,7 @@ const Sliders = () => {
             <Button
               sx={buttonSX}
               variant="contained"
-              // onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               DELETE
             </Button>
@@ -128,6 +128,14 @@ const Sliders = () => {
           },
         }}
       >
+        <Link to="/add-slider" style={{ textDecoration: 'none'}}>
+       <Button  color="secondary" variant="contained"
+       sx={{ margin: "5px",}}
+      
+       >
+            ADD Offer
+          </Button>
+          </Link>
         <DataGrid
           checkboxSelection
           rows={sliders}

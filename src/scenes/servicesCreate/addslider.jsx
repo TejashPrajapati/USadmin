@@ -13,13 +13,13 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { addElectrician } from "../../redux/apiCalls";
+import { addSliders,deleteSliders } from "../../redux/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
 import FileBase64 from 'react-file-base64';
 
 import Header from "../../components/Header";
 
-const Addelectrician = () => {
+const Addslider = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -49,17 +49,17 @@ const Addelectrician = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const addelectrician = {
+    const addsliders = {
       ...inputs,
     };
-    console.log(addelectrician);
-    addElectrician(addelectrician, dispatch);
-    toast.success("Service Added Successfully!");
+    console.log(addsliders);
+    addSliders(addsliders, dispatch);
+    toast.success("OFFER Added Successfully!");
   };
 
   return (
     <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
-      <Header title={`ADD ELECTRICIAN `} subtitle="Create New  Services " />
+      <Header title={`ADD OFFER `} subtitle="Create New  Offer " />
       <Box
         display="grid"
         gap="30px"
@@ -74,9 +74,9 @@ const Addelectrician = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="Name"
-          name="name"
-          sx={{ gridColumn: "span 2" }}
+          label="Title"
+          name="title"
+          sx={{ gridColumn: "span 1" }}
           required
           onChange={handleChange}
         />
@@ -84,13 +84,13 @@ const Addelectrician = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="Rating"
-          name=" rating"
-          sx={{ gridColumn: "span 1" }}
+          label="Image url"
+          name="image"
+          sx={{ gridColumn: "span 2" }}
           required
           onChange={handleChange}
         />
-        <TextField
+        {/* <TextField
           fullWidth
           variant="filled"
           type="number"
@@ -99,8 +99,8 @@ const Addelectrician = () => {
           sx={{ gridColumn: "span 1" }}
           required
           onChange={handleChange}
-        />
-        <TextField
+        /> */}
+        {/* <TextField
           fullWidth
           variant="filled"
           type="text"
@@ -114,12 +114,12 @@ const Addelectrician = () => {
           fullWidth
           variant="filled"
           type="text"
-          label="description"
+          label="Discription"
           name="description"
           sx={{ gridColumn: "span 4" }}
           required
           onChange={handleChange}
-        />
+        /> */}
 
         <Box
           display="flex"
@@ -137,4 +137,4 @@ const Addelectrician = () => {
   );
 };
 
-export default Addelectrician;
+export default Addslider;

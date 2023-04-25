@@ -25,7 +25,7 @@ const Dashboard = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
-      const res = await axios.get("/users?any=true", {
+      const res = await axios.get("/auth?any=true", {
         headers: {
           token:
             "Bearer " +

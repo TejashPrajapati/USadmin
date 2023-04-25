@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const spaSlice = createSlice({
+const bookingSlice = createSlice({
   name: "booking",
   initialState: {
-    spa: [],
+    booking: [],
     isFetching: false,
     error: false,
   },  
@@ -23,20 +23,20 @@ const spaSlice = createSlice({
       state.isFetching = false;
     },
 
-  //  ADD
-    addSpaStart(state) {
-      state.error = false;
-      state.isFetching = true;
-    },
-    addSpaSuccess(state, action) {
-      state.spa.push(action.payload);
-      state.isFetching = false;
-      state.error = false;
-    },
-    addSpaFailure(state) {
-      state.error = true;
-      state.isFetching = false;
-    },
+  // //  ADD
+  //   addSpaStart(state) {
+  //     state.error = false;
+  //     state.isFetching = true;
+  //   },
+  //   addSpaSuccess(state, action) {
+  //     state.spa.push(action.payload);
+  //     state.isFetching = false;
+  //     state.error = false;
+  //   },
+  //   addSpaFailure(state) {
+  //     state.error = true;
+  //     state.isFetching = false;
+  //   },
 
     // //DELETE
     deleteBookingStart(state) {
@@ -45,7 +45,7 @@ const spaSlice = createSlice({
     },
     deleteBookingSuccess(state, action) {
       state.booking.splice(
-        state.booking.findIndex((spa) => spa._id === action.payload),
+        state.booking.findIndex((booking) => booking._id === action.payload),
         1
       );
       state.isFetching = false;
@@ -55,21 +55,21 @@ const spaSlice = createSlice({
       state.error = true;
       state.isFetching = false;
     },
-     //UPDATE
-     updateSpaStart(state) {
-      state.isFetching = true;
-      state.error = false;
-    },
-    updateSpaSuccess(state, action) {
-      state.isFetching = false;
-      state.lists[
-        state.lists.findIndex((name) => name._id === action.payload.id)
-      ] = action.payload.updatedlist;
-    },
-    updateSpaFailure(state) {
-      state.isFetching = false;
-      state.error = true;
-    },
+    //  //UPDATE
+    //  updateSpaStart(state) {
+    //   state.isFetching = true;
+    //   state.error = false;
+    // },
+    // updateSpaSuccess(state, action) {
+    //   state.isFetching = false;
+    //   state.lists[
+    //     state.lists.findIndex((name) => name._id === action.payload.id)
+    //   ] = action.payload.updatedlist;
+    // },
+    // updateSpaFailure(state) {
+    //   state.isFetching = false;
+    //   state.error = true;
+    // },
   },
 });
 
@@ -80,12 +80,12 @@ export const {
     deleteBookingStart,
     deleteBookingSuccess,
     deleteBookingFailure,
-    addSpaStart,
-    addSpaSuccess,
-    addSpaFailure,
-    updateSpaStart,
-    updateSpaSuccess,
-    updateSpaFailure,
-  } = spaSlice.actions;
+    // addSpaStart,
+    // addSpaSuccess,
+    // addSpaFailure,
+    // updateSpaStart,
+    // updateSpaSuccess,
+    // updateSpaFailure,
+  } = bookingSlice.actions;
 
-export default spaSlice.reducer;
+export default bookingSlice.reducer;

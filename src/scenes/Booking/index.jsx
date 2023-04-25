@@ -3,12 +3,13 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useEffect } from "react";
-import { getBooking, deleteBooking  } from "../../redux/apiCalls";
+// import { getSpa, deleteSpa  } from "../../redux/apiCalls";
+import { getBooking, deleteBooking } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //import { height } from "@mui/system";
 
-const Getbooking = (props) => {
+const GetSpa = (props) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
  
@@ -18,7 +19,7 @@ const Getbooking = (props) => {
   useEffect(() => {
     getBooking(dispatch);
   }, [dispatch]);
-  const getbooking = useSelector((state) => state.booking.booking);
+  const getbooking = useSelector((state) => state.bookings.booking);
   console.log(getbooking);
 
   
@@ -70,12 +71,6 @@ const Getbooking = (props) => {
       align: "left",
     },
     {
-        field: "offer",
-        headerName: "Offer",
-        flex: 1,
-        align: "left",
-      },
-    {
       field: "discription",
       headerName: "Discription",
       flex: 1,
@@ -96,23 +91,20 @@ const Getbooking = (props) => {
         };
         return (
           <Box display="flex" gap="10px">
-            <Link
-              to={`/update-spa/${params.row._id}`}
-              style={{ textDecoration: "none" }}
-            >
+           
               <Button
-                sx={{ padding: "5px", bgcolor: colors.primary[500] }}
+                sx={{ padding: "5px", bgcolor: colors.greenAccent[500] }}
                 variant="contained"
               >
-                Edit
+                Approve
               </Button>
-            </Link>
+           
             <Button
               sx={buttonSX}
               variant="contained"
               onClick={() => handleDelete(params.row._id)}
             >
-              DELETE
+              Reject
             </Button>
           </Box>
         );
@@ -122,7 +114,7 @@ const Getbooking = (props) => {
 
   return (
     <Box m="20px">
-      <Header title="SPA" subtitle="Managing the Spa" />
+      <Header title="BOOKING SERVICES" subtitle="Managing BookingServices" />
       
       <Box
         m="20px 0 0 0"
@@ -156,14 +148,14 @@ const Getbooking = (props) => {
           },
         }}
       >
-      <Link to="/add-spa" style={{ textDecoration: 'none'}}>
+      {/* <Link to="/add-spa" style={{ textDecoration: 'none'}}>
        <Button  color="secondary" variant="contained"
        sx={{ margin: "5px",}}
       
        >
             ADD Service
           </Button>
-          </Link>
+          </Link> */}
         <DataGrid
           checkboxSelection
           rows={getbooking}
@@ -177,14 +169,4 @@ const Getbooking = (props) => {
 };
 
 
-export default Getbooking;
-// import React from 'react'
-
-// function index() {
-//   return (
-//     <div>index</div>
-//   )
-// }
-
-// export default index
-
+export default GetSpa;
